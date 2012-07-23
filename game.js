@@ -4,50 +4,8 @@ var keyOffset = 0;
 var playStates = [];
 var playStateIndex = -1;
 
-var keys = ["red", "red", "green", 
-            "green", "blue", "blue", 
-            "blue", "red", "green"];
-var edges =  {
- "3444": "blue",
- "2324": "red",
- "0212": "blue",
- "1424": "blue",
- "1213": "red",
- "4344": "blue",
- "2030": "green",
- "1011": "blue",
- "4041": "blue",
- "2122": "red",
- "0111": "red",
- "3233": "red",
- "0313": "blue",
- "0414": "red",
- "3031": "red",
- "1121": "blue",
- "1112": "blue",
- "0001": "green",
- "1314": "green",
- "2232": "green",
- "1020": "blue",
- "1323": "green",
- "4142": "blue",
- "3141": "blue",
- "3343": "blue",
- "3242": "red",
- "2333": "blue",
- "0102": "green",
- "3334": "blue",
- "2434": "blue",
- "0010": "red",
- "1222": "blue",
- "0304": "blue",
- "2131": "blue",
- "2021": "red",
- "0203": "red",
- "3132": "blue",
- "4243": "blue",
- "2223": "green",
- "3040": "red"};
+var keys;
+var edges;
 
 var place = function($el, row, col, offset) {
     $el.css({
@@ -142,7 +100,18 @@ var renderVictory = function() {
     var victory = $("<div><span>Congratulations</span><br />You win!</div>").addClass("victory");
     container.append(victory);
 };
+
 $(function() {
+    var hash = window.location.hash;
+    console.log(hash);
+    if (hash === "#hard") {
+        keys = ["red", "green", "blue", "blue", "green", "red", "red", "green", "blue"];
+        edges = {"0313": "green", "0212": "blue", "4243": "red", "2324": "blue", "0304": "blue", "0001": "red", "1424": "red", "3242": "red", "1222": "green", "0010": "green", "3334": "green", "1314": "green", "1112": "red", "1323": "red", "2131": "red", "2434": "blue", "3040": "green", "2030": "red", "0414": "red", "3141": "red", "3444": "blue", "1020": "green", "0102": "green", "2223": "red", "2021": "blue", "1121": "green", "0203": "red", "4344": "red", "3233": "red", "1213": "blue", "2232": "blue", "3343": "red", "0111": "blue", "2122": "red", "1011": "blue", "3132": "green", "4142": "green", "2333": "red", "4041": "blue", "3031": "green"};
+    } else {
+        keys = ["red", "red", "green", "green", "blue", "blue", "blue", "red", "green"];
+        edges = {"3444": "blue", "2324": "red", "0212": "blue", "1424": "blue", "1213": "red", "4344": "blue", "2030": "green", "1011": "blue", "4041": "blue", "2122": "red", "0111": "red", "3233": "red", "0313": "blue", "0414": "red", "3031": "red", "1121": "blue", "1112": "blue", "0001": "green", "1314": "green", "2232": "green", "1020": "blue", "1323": "green", "4142": "blue", "3141": "blue", "3343": "blue", "3242": "red", "2333": "blue", "0102": "green", "3334": "blue", "2434": "blue", "0010": "red", "1222": "blue", "0304": "blue", "2131": "blue", "2021": "red", "0203": "red", "3132": "blue", "4243": "blue", "2223": "green", "3040": "red"};
+    }
+
     
     var container = $("#container");
     
